@@ -75,7 +75,6 @@
             android:layout_height="match_parent"
             android:text="7"
             android:textSize="35dp"
-            android:background="@color/light"
             android:textStyle="bold"
             android:layout_weight="1"/>
 
