@@ -45,8 +45,13 @@ public class MainActivity extends AppCompatActivity {
         btnbs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String recent = input.getText().toString();
-                input.setText(recent.substring(0, recent.length()-1));
+                if (equal){
+                    btnc.callOnClick();
+                    equal = false;
+                } else {
+                    String recent = input.getText().toString();
+                    input.setText(recent.substring(0, recent.length()-1));
+                }
             }
         });
 
@@ -65,9 +70,6 @@ public class MainActivity extends AppCompatActivity {
                     input.setText("0");
                 } else {
                     in.append("0");
-                    if (in.length() > 8) {
-                        input.setTextSize(30);
-                    }
                     input.setText(in.toString());
                 }
             }
@@ -87,9 +89,6 @@ public class MainActivity extends AppCompatActivity {
                     input.setText("1");
                 } else {
                     in.append("1");
-                    if (in.length() > 8) {
-                        input.setTextSize(30);
-                    }
                     input.setText(in.toString());
                 }
             }
@@ -109,9 +108,6 @@ public class MainActivity extends AppCompatActivity {
                     input.setText("2");
                 } else {
                     in.append("2");
-                    if (in.length() > 8) {
-                        input.setTextSize(30);
-                    }
                     input.setText(in.toString());
                 }
             }
@@ -131,9 +127,6 @@ public class MainActivity extends AppCompatActivity {
                     input.setText("3");
                 } else {
                     in.append("3");
-                    if (in.length() > 8) {
-                        input.setTextSize(30);
-                    }
                     input.setText(in.toString());
                 }
             }
@@ -153,9 +146,6 @@ public class MainActivity extends AppCompatActivity {
                     input.setText("4");
                 } else {
                     in.append("4");
-                    if (in.length() > 8) {
-                        input.setTextSize(30);
-                    }
                     input.setText(in.toString());
                 }
             }
@@ -175,9 +165,6 @@ public class MainActivity extends AppCompatActivity {
                     input.setText("5");
                 } else {
                     in.append("5");
-                    if (in.length() > 8) {
-                        input.setTextSize(30);
-                    }
                     input.setText(in.toString());
                 }
             }
@@ -197,9 +184,6 @@ public class MainActivity extends AppCompatActivity {
                     input.setText("6");
                 } else {
                     in.append("6");
-                    if (in.length() > 8) {
-                        input.setTextSize(30);
-                    }
                     input.setText(in.toString());
                 }
             }
@@ -219,9 +203,6 @@ public class MainActivity extends AppCompatActivity {
                     input.setText("7");
                 } else {
                     in.append("7");
-                    if (in.length() > 8) {
-                        input.setTextSize(30);
-                    }
                     input.setText(in.toString());
                 }
             }
@@ -241,9 +222,6 @@ public class MainActivity extends AppCompatActivity {
                     input.setText("8");
                 } else {
                     in.append("8");
-                    if (in.length() > 8) {
-                        input.setTextSize(30);
-                    }
                     input.setText(in.toString());
                 }
             }
@@ -263,9 +241,6 @@ public class MainActivity extends AppCompatActivity {
                     input.setText("9");
                 } else {
                     in.append("9");
-                    if (in.length() > 8) {
-                        input.setTextSize(30);
-                    }
                     input.setText(in.toString());
                 }
             }
