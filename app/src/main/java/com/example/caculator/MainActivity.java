@@ -32,6 +32,57 @@ public class MainActivity extends AppCompatActivity {
                 decimal = false;
             }
         });
+        final Button btnequal = findViewById(R.id.btnequal);
+        btnequal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Addition || Subtract || Multiplication || Division) {
+                    input2 = Double.parseDouble(input.getText().toString());
+                    equal = true;
+                }
+                if (Addition) {
+                    double result = input1 + input2;
+                    int result1 = (int) result;
+                    if (result1 == result) {
+                        input.setText(result1 + "");
+                    } else {
+                        input.setText(result + "");
+                    }
+                    Addition = false;
+                }
+                if (Subtract) {
+                    double result = input1 - input2;
+                    int result1 = (int) result;
+                    if (result1 == result) {
+                        input.setText(result1 + "");
+                    } else {
+                        input.setText(result + "");
+                    }
+                    Subtract = false;
+                }
+                if (Multiplication) {
+                    double result = input1 * input2;
+                    int result1 = (int) result;
+                    if (result1 == result) {
+                        input.setText(result1 + "");
+                    } else {
+                        input.setText(result + "");
+                    }
+                    Multiplication = false;
+                }
+                if (Division) {
+                    double result = input1 / input2;
+                    int result1 = (int) result;
+                    if (result1 == result) {
+                        input.setText(result1 + "");
+                    } else {
+                        input.setText(result + "");
+                    }
+                    Division = false;
+                }
+            }
+        });
+
 
         Button btnce = findViewById(R.id.btnce);
         btnce.setOnClickListener(new View.OnClickListener() {
@@ -50,7 +101,11 @@ public class MainActivity extends AppCompatActivity {
                     equal = false;
                 } else {
                     String recent = input.getText().toString();
-                    input.setText(recent.substring(0, recent.length()-1));
+                    if (recent.length()==1){
+                        input.setText("0");
+                    } else {
+                        input.setText(recent.substring(0, recent.length() - 1));
+                    }
                 }
             }
         });
@@ -245,19 +300,33 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        Button btnas = findViewById(R.id.btnas);
+        btnas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StringBuffer in = new StringBuffer(input.getText().toString());
+                double in1 = Double.parseDouble(in.toString());
+                in1 *= -1;
+                int in2 = (int) in1;
+                if(in1 == in2)
+                    input.setText(String.valueOf(in2));
+                else
+                    input.setText(String.valueOf(in1));
+            }
+        });
 
         Button btnadd = findViewById(R.id.btnadd);
         btnadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (equal) {
-                    btnc.callOnClick();
-                    equal = false;
+                if (Addition || Subtract || Multiplication || Division) {
+                    btnequal.callOnClick();
                 }
                 input1 = Double.parseDouble(input.getText().toString());
                 Addition = true;
                 decimal = false;
                 input.setText("0");
+                equal = false;
             }
         });
 
@@ -265,10 +334,10 @@ public class MainActivity extends AppCompatActivity {
         btnsub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (equal) {
-                    btnc.callOnClick();
-                    equal = false;
+                if(Addition || Subtract || Multiplication || Division) {
+                    btnequal.callOnClick();
                 }
+                equal = false;
                 input1 = Double.parseDouble(input.getText().toString());
                 Subtract = true;
                 decimal = false;
@@ -280,10 +349,10 @@ public class MainActivity extends AppCompatActivity {
         btnmul.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (equal) {
-                    btnc.callOnClick();
-                    equal = false;
+                if (Addition || Subtract || Multiplication || Division) {
+                    btnequal.callOnClick();
                 }
+                equal = false;
                 input1 = Double.parseDouble(input.getText().toString());
                 Multiplication = true;
                 decimal = false;
@@ -295,10 +364,10 @@ public class MainActivity extends AppCompatActivity {
         btndiv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (equal) {
-                    btnc.callOnClick();
-                    equal = false;
+                if (Addition || Subtract || Multiplication || Division) {
+                    btnequal.callOnClick();
                 }
+                equal = false;
                 input1 = Double.parseDouble(input.getText().toString());
                 Division = true;
                 decimal = false;
@@ -306,56 +375,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button btnequal = findViewById(R.id.btnequal);
-        btnequal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                equal = true;
-                if (Addition || Subtract || Multiplication || Division) {
-                    input2 = Double.parseDouble(input.getText().toString());
-                }
-                if (Addition) {
-                    double result = input1 + input2;
-                    int result1 = (int) result;
-                    if (result1 == result) {
-                        input.setText(result1 + "");
-                    } else {
-                        input.setText(result + "");
-                    }
-                    Addition = false;
-                }
-                if (Subtract) {
-                    double result = input1 - input2;
-                    int result1 = (int) result;
-                    if (result1 == result) {
-                        input.setText(result1 + "");
-                    } else {
-                        input.setText(result + "");
-                    }
-                    Subtract = false;
-                }
-                if (Multiplication) {
-                    double result = input1 * input2;
-                    int result1 = (int) result;
-                    if (result1 == result) {
-                        input.setText(result1 + "");
-                    } else {
-                        input.setText(result + "");
-                    }
-                    Multiplication = false;
-                }
-                if (Division) {
-                    double result = input1 / input2;
-                    int result1 = (int) result;
-                    if (result1 == result) {
-                        input.setText(result1 + "");
-                    } else {
-                        input.setText(result + "");
-                    }
-                    Division = false;
-                }
-            }
-        });
+
 
         Button btndec = findViewById(R.id.btndec);
         btndec.setOnClickListener(new View.OnClickListener() {
